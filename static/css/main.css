@@ -1,0 +1,213 @@
+@import url(https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&display=swap);
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap');
+
+:root {
+    --color-background: #202334;
+    --color-text-white: #eeeeee;
+    --color-text-orange: #f4c482;
+    --color-text-gray: #333333;
+    --color-background-blue: #061019;
+}
+
+* {
+    margin: 0;
+    background-color: inherit;
+    color: var(--color-text-white);
+    font-family: "Ubuntu", sans-serif;
+    /* font-family: "Nunito", sans-serif; */
+}
+
+nav {
+    width: 100%;
+    background-color: inherit;
+    /* overflow: hidden; */
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin: 1em auto;
+}
+
+nav li {
+    margin: 1em 0.5em;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav a:hover,
+a.active {
+    color: var(--color-text-orange);
+}
+
+div#main-body {
+    /* display: flex; */
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+div#main-header {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+div#main-header-name {
+    font-weight: bolder;
+    font-size: 5em;
+    color: var(--color-text-orange);
+}
+
+div#main-header-career {
+    /* font-family: 'Ubuntu Sans Mono', monospace; */
+    font-family: monospace;
+    font-size: 2em;
+    /* Ensures the content is not revealed until the animation */
+    overflow: hidden;
+    /* The typwriter cursor */
+    border-right: .15em solid var(--color-text-orange);
+    /* Keeps the content on a single line */
+    white-space: nowrap;
+    /* Gives that scrolling effect as the typing happens */
+    margin: 0 auto;
+    /* Adjust as needed */
+    letter-spacing: .15em;
+    animation:
+        /* typing 3.5s steps(18, end), */
+        blink-caret .5s step-end infinite;
+}
+
+div#main-about {
+    background-color: #0c1620;
+    height: 100vh;
+}
+
+div#main-projects {
+    height: 100vh;
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+/*****************************************************************************/
+
+body {
+    background-color: var(--color-background-blue);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+section {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    background-color: inherit;
+    max-width: 900px;
+    width: 100%;
+}
+
+section .container {
+    padding: 5em 2em;
+    overflow-x: hidden;
+}
+
+section#hero {
+    height: 100vh;
+    background-color: inherit;
+}
+
+section#hero div.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+section#hero h1 {
+    background-color: inherit;
+    color: var(--color-text-orange);
+    font-size: 5em;
+    text-align: center;
+}
+
+section#hero h2 {
+    width: auto;
+    font-family: monospace;
+    font-size: 1.5em;
+    letter-spacing: .15em;
+    font-weight: normal;
+}
+
+section#hero h2 span.typewriter {
+    border-right: .15em solid var(--color-text-orange);
+    animation:
+        blink-caret .5s step-end infinite;
+}
+
+section#hero p {
+    padding: 3em 1em;
+    text-align: center;
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: var(--color-text-orange);
+    }
+}
+
+section#projects {
+    height: 100vh;
+    background-color: #0c1620;
+}
+
+section#about-me {
+    height: 100vh;
+    background-color: var(--color-text-white);
+}
+
+section#about-me h1, section#about-me p {
+    color: var(--color-text-gray);
+}
+
+section#contact {
+    height: 100vh;
+    background-color: #0c1620;
+}
+
+/* TO-DO LIST
+    * FONT
+    * MAKE NAV BAR SSSSSSSSSTICKY
+    * foota'
+*/
