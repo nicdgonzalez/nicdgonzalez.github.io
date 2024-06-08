@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&display=swap);
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
     --color-background: #202334;
@@ -16,97 +15,7 @@
     background-color: inherit;
     color: var(--color-text-white);
     font-family: "Ubuntu", sans-serif;
-    /* font-family: "Nunito", sans-serif; */
 }
-
-nav {
-    width: 100%;
-    background-color: inherit;
-    /* overflow: hidden; */
-}
-
-nav ul {
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-    margin: 1em auto;
-}
-
-nav li {
-    margin: 1em 0.5em;
-}
-
-nav a {
-    text-decoration: none;
-}
-
-nav a:hover,
-a.active {
-    color: var(--color-text-orange);
-}
-
-div#main-body {
-    /* display: flex; */
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-}
-
-div#main-header {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
-
-div#main-header-name {
-    font-weight: bolder;
-    font-size: 5em;
-    color: var(--color-text-orange);
-}
-
-div#main-header-career {
-    /* font-family: 'Ubuntu Sans Mono', monospace; */
-    font-family: monospace;
-    font-size: 2em;
-    /* Ensures the content is not revealed until the animation */
-    overflow: hidden;
-    /* The typwriter cursor */
-    border-right: .15em solid var(--color-text-orange);
-    /* Keeps the content on a single line */
-    white-space: nowrap;
-    /* Gives that scrolling effect as the typing happens */
-    margin: 0 auto;
-    /* Adjust as needed */
-    letter-spacing: .15em;
-    animation:
-        /* typing 3.5s steps(18, end), */
-        blink-caret .5s step-end infinite;
-}
-
-div#main-about {
-    background-color: #0c1620;
-    height: 100vh;
-}
-
-div#main-projects {
-    height: 100vh;
-}
-
-@keyframes typing {
-    from {
-        width: 0
-    }
-
-    to {
-        width: 100%
-    }
-}
-
-/*****************************************************************************/
 
 body {
     background-color: var(--color-background-blue);
@@ -116,40 +25,83 @@ body {
     justify-content: center;
 }
 
-section {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-}
-
-nav {
-    display: flex;
-    justify-content: center;
-}
-
 .container {
     background-color: inherit;
     max-width: 900px;
     width: 100%;
+    justify-content: center;
+}
+
+section {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    background-color: #061019A0;
+    border-bottom: 1px solid var(--color-text-orange);
+    backdrop-filter: blur(7.5px);
+    padding: 1em 0;
+}
+
+nav div.container {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0;
+}
+
+nav li {
+    margin: 1em 0.5em;
+}
+
+nav a {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    text-align: center;
+}
+
+nav a:hover,
+a.active {
+    color: var(--color-text-orange);
 }
 
 section .container {
-    padding: 5em 2em;
-    overflow-x: hidden;
+    padding: 7em 2em;
+    overflow: hidden;
 }
 
 section#hero {
-    height: 100vh;
     background-color: inherit;
 }
 
 section#hero div.container {
+    padding: 7em 2em;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
 section#hero h1 {
+    font-family: "Poppins", sans-serif;
+    line-height: 1em;
     background-color: inherit;
     color: var(--color-text-orange);
     font-size: 5em;
@@ -188,12 +140,10 @@ section#hero p {
 }
 
 section#projects {
-    height: 100vh;
     background-color: #0c1620;
 }
 
 section#about-me {
-    height: 100vh;
     background-color: var(--color-text-white);
 }
 
@@ -202,12 +152,27 @@ section#about-me h1, section#about-me p {
 }
 
 section#contact {
-    height: 100vh;
     background-color: #0c1620;
 }
 
-/* TO-DO LIST
-    * FONT
-    * MAKE NAV BAR SSSSSSSSSTICKY
-    * foota'
-*/
+/* Scrollbar */
+
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+        background-color: var(--color-text-gray);
+}
+
+::-webkit-scrollbar
+{
+	width: 7px;
+        background-color: var(--color-text-gray);
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
