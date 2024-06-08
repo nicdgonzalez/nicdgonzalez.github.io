@@ -8,6 +8,10 @@
     --color-text-orange: #f4c482;
     --color-text-gray: #333333;
     --color-background-blue: #061019;
+    /* Alternating background colors */
+    --color-section-1: #061019;
+    --color-section-2: #0c1620;
+    --color-section-3: #eeeeee;
 }
 
 * {
@@ -37,6 +41,24 @@ section {
     width: 100%;
     height: 100vh;
     justify-content: center;
+    align-items: center;
+}
+
+/* Make each section alternate between different colors */
+section:nth-child(3n+1) {
+    background-color: var(--color-section-1);
+}
+
+section:nth-child(3n+2) {
+    background-color: var(--color-section-2);
+}
+
+section:nth-child(3n+3) {
+    background-color: var(--color-section-3);
+}
+
+section:nth-child(3n+3) h1, section:nth-child(3n) p, section:nth-child(3n) b {
+    color: var(--color-text-gray);
 }
 
 nav {
@@ -50,7 +72,7 @@ nav {
     background-color: #061019A0;
     border-bottom: 1px solid var(--color-text-orange);
     backdrop-filter: blur(7.5px);
-    padding: 1em 0;
+    padding: 0;
 }
 
 nav div.container {
@@ -86,10 +108,6 @@ a.active {
 section .container {
     padding: 7em 2em;
     overflow: hidden;
-}
-
-section#hero {
-    background-color: inherit;
 }
 
 section#hero div.container {
@@ -139,22 +157,6 @@ section#hero p {
     }
 }
 
-section#projects {
-    background-color: #0c1620;
-}
-
-section#about-me {
-    background-color: var(--color-text-white);
-}
-
-section#about-me h1, section#about-me p {
-    color: var(--color-text-gray);
-}
-
-section#contact {
-    background-color: #0c1620;
-}
-
 /* Scrollbar */
 
 ::-webkit-scrollbar-track
@@ -175,4 +177,28 @@ section#contact {
 	border-radius: 10px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #555;
+}
+
+section#contact div.container {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+section#contact ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin-top: 1em;
+    padding: 0;
+    justify-content: center;
+}
+
+section#contact li {
+    padding: 0.5em;
+}
+
+section#contact img {
+    width: 35px;
+    height: 35px;
 }
