@@ -137,7 +137,7 @@ section#hero h2 {
 section#hero h2 span.typewriter {
     border-right: .15em solid var(--color-text-orange);
     animation:
-        blink-caret .5s step-end infinite;
+        blink-caret 1s step-end infinite;
 }
 
 section#hero p {
