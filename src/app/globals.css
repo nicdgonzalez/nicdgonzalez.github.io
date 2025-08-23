@@ -1,26 +1,61 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/** Borrowed from: https://www.yuridenki.co.jp/ */
+.scroll-line {
+  display: block;
+  position: absolute;
+  left: 11.7%;
+  bottom: 14%;
+  width: 1px;
+  height: 120px;
+  transition: all 1.4s;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.scroll-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  margin: 0;
+  background-image: linear-gradient(
+    to bottom,
+    #666,
+    #666 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  background-size: 2px 3px;
+  background-repeat: repeat-y;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.scroll-line::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 1px;
+  background-color: #666;
+  -webkit-animation: lineMove 3s ease infinite;
+  animation: lineMove 3s ease infinite;
+}
+
+@keyframes lineMove {
+  0% {
+    bottom: 100%;
+    height: 0;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  20% {
+    bottom: 0;
+    height: 100%;
+  }
+  40% {
+    bottom: 0;
+    height: 0;
+  }
+  100% {
+    bottom: 0;
+    height: 0;
+  }
 }
