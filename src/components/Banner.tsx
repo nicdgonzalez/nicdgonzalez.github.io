@@ -1,22 +1,19 @@
 "use client";
 
 import { X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface BannerProps {
   children: React.ReactNode;
 }
 
 export function Banner({ children }: BannerProps) {
-  // I don't want the banner to stay hidden if it gets changed, so we'll
-  // encode some additional information into the value to make sure we are
-  // hiding the correct banner.
-  //
-  // date,counter
-  const bannerInfo = "2025-08-22,0";
-  const [hidden, setHidden] = useState(
-    () => localStorage.getItem("bannerHidden") === bannerInfo,
-  );
+  const bannerInfo = "2025-08-28,0";
+  const [hidden, setHidden] = useState(true);
+
+  useEffect(() => {
+    setHidden(window.localStorage.getItem("bannerHidden") === bannerInfo);
+  });
 
   if (hidden) {
     return;
