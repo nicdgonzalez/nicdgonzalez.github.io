@@ -10,7 +10,7 @@ export const PrimaryButton = ({ children, className }: ButtonProps) => {
     <button
       type="button"
       className={cn(
-        "flex flex-row min-h-12 text-xs md:text-sm text-white dark:text-black bg-slate-700 hover:bg-slate-900 dark:bg-slate-300 hover:dark:bg-slate-100 px-4 py-2 font-semibold rounded-full items-center justify-center hover:cursor-pointer",
+        "flex flex-row min-h-12 text-xs md:text-sm text-white dark:text-black bg-slate-700 hover:bg-slate-900 dark:bg-slate-300 hover:dark:bg-slate-100 px-4 py-2 font-semibold rounded-full items-center justify-center hover:cursor-pointer w-full sm:w-fit",
         className,
       )}
     >
@@ -24,7 +24,7 @@ export const SecondaryButton = ({ children, className }: ButtonProps) => {
     <button
       type="button"
       className={cn(
-        "flex flex-row min-h-12 text-xs md:text-sm text-black dark:text-white bg-slate-200 hover:bg-slate-100 dark:bg-slate-800 hover:dark:bg-slate-700 px-4 py-2 font-semibold rounded-full items-center justify-center hover:cursor-pointer border border-slate-500",
+        "flex flex-row min-h-12 text-xs md:text-sm text-black dark:text-white bg-slate-100 hover:bg-white dark:bg-slate-800 hover:dark:bg-slate-700 px-4 py-2 font-semibold rounded-full items-center justify-center hover:cursor-pointer border border-slate-500 w-full sm:w-fit",
         className,
       )}
     >

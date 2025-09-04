@@ -14,7 +14,7 @@ export const Header = () => {
   }> = [
     {
       id: "nav-home",
-      href: "/",
+      href: "#home",
       name: "Home",
       targetSectionId: "home",
     },
@@ -91,7 +91,7 @@ export const Header = () => {
         {isOpenMobile ? <X size={24} /> : <Menu size={24} />}
       </button>
       <header
-        className={`fixed md:top-0 flex md:flex flex-col md:flex-row w-screen min-h-screen bg-slate-100 dark:bg-slate-900 md:bg-transparent md:dark:bg-transparent md:min-h-6 justify-center md:justify-end items-center p-8
+        className={`z-40 fixed md:top-0 flex md:flex flex-col md:flex-row w-screen min-h-screen bg-slate-100 dark:bg-slate-900 md:bg-transparent md:dark:bg-transparent md:min-h-6 justify-center md:justify-end items-center p-8
           ${isOpenMobile ? "" : "hidden"}`}
       >
         <Navigation>
@@ -114,8 +114,8 @@ export const Header = () => {
             <NavigationItem>
               <a
                 href="../Nicolas_Gonzalez.pdf"
-                rel="noreferrer noopener"
                 target="_blank"
+                rel="noreferrer noopener"
               >
                 <button
                   type="button"
@@ -131,7 +131,11 @@ export const Header = () => {
           </NavigationSection>
           <NavigationSection>
             <NavigationItem>
-              <a href="https://github.com/nicdgonzalez">
+              <a
+                href="https://github.com/nicdgonzalez"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
                 <FaGithub size={24} />
               </a>
             </NavigationItem>
