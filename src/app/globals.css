@@ -1,11 +1,23 @@
 @import "tailwindcss";
 
+.nav-item::after {
+  content: "";
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+  height: 2px;
+
+  :hover {
+    background-color: var(--color-cyan-500);
+  }
+}
+
 /** Borrowed from: https://www.yuridenki.co.jp/ */
 .scroll-line {
-  display: block;
+  /* display: block; */
   position: absolute;
-  left: 11.7%;
-  bottom: 14%;
+  left: 4%;
+  bottom: 8%;
   width: 1px;
   height: 120px;
   transition: all 1.4s;
@@ -19,13 +31,11 @@
   width: 1px;
   height: 100%;
   margin: 0;
-  background-image: linear-gradient(
-    to bottom,
-    #666,
-    #666 1px,
-    transparent 1px,
-    transparent 3px
-  );
+  background-image: linear-gradient(to bottom,
+      #666,
+      #666 1px,
+      transparent 1px,
+      transparent 3px);
   background-size: 2px 3px;
   background-repeat: repeat-y;
 }
@@ -46,14 +56,17 @@
     bottom: 100%;
     height: 0;
   }
+
   20% {
     bottom: 0;
     height: 100%;
   }
+
   40% {
     bottom: 0;
     height: 0;
   }
+
   100% {
     bottom: 0;
     height: 0;

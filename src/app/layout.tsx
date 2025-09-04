@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Banner } from "@/components/Banner";
 
 import "./globals.css";
 
@@ -27,9 +26,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-50 text-black dark:text-white dark:bg-zinc-950`}
+        className={`${geistSans.variable} ${geistMono.variable} min-w-screen min-h-screen antialiased bg-slate-100 text-black dark:text-white dark:bg-slate-900`}
       >
-        <Banner>This site is under active development!</Banner>
         {children}
       </body>
     </html>
