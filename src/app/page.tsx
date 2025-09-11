@@ -2,7 +2,6 @@
 
 import {
   BookOpen,
-  Briefcase,
   Calendar,
   ChevronDown,
   CircleArrowRight,
@@ -14,12 +13,14 @@ import {
   Rocket,
   Sun,
 } from "lucide-react";
-import { useEffect, useState } from "react";
 import type React from "react";
+import { useEffect, useRef, useState } from "react";
 import { BackgroundBeams } from "@/components/BackgroundBeams";
 import { PrimaryButton, SecondaryButton } from "@/components/Button";
 import { Header } from "@/components/Header";
 import { cn } from "@/lib/utils";
+
+const FADE_IN_THRESHOLD = 0.3;
 
 export default function Page() {
   return (
@@ -46,15 +47,15 @@ const Home = () => {
       <BackgroundBeams className="z-0 pointer-events-none" />
       <Container className="items-center text-center lg:justify-center lg:items-center gap-y-8">
         <div className="flex flex-col items-center gap-y-4">
-          <Heading className="bg-gradient-to-br lg:bg-gradient-to-b from-cyan-300 to-cyan-500 to-50% bg-clip-text text-transparent text-6xl lg:text-8xl font-extrabold">
+          <h1 className="text-wrap bg-gradient-to-br lg:bg-gradient-to-b from-cyan-300 to-cyan-500 to-50% bg-clip-text text-transparent text-6xl lg:text-8xl font-extrabold animate-once animate-fade-down animate-ease-in">
             Nicolas Gonzalez
-          </Heading>
-          <h2 className="text-wrap text-base md:text-xl">
+          </h1>
+          <h2 className="text-wrap text-base md:text-xl animate-once animate-fade animate-ease-in animate-delay-500">
             Passionate self-taught Software Developer with half a decade of
             hands-on experience.
           </h2>
         </div>
-        <div className="flex flex-col sm:flex-row w-full justify-center gap-4">
+        <div className="flex flex-col sm:flex-row w-full justify-center gap-4 animate-once animate-fade-up animate-ease-in animate-delay-1000">
           <a href="#projects">
             <PrimaryButton className="gap-x-1 lg:gap-x-2">
               View My Work
@@ -72,7 +73,7 @@ const Home = () => {
             </SecondaryButton>
           </a>
         </div>
-        <div className="relative grid grid-cols-1 lg:grid-cols-3 gap-4 text-wrap md:top-12 lg:top-24">
+        <div className="relative grid grid-cols-1 lg:grid-cols-3 gap-4 text-wrap md:top-12 lg:top-24 animate-once animate-fade-up animate-ease-in animate-delay-1500">
           <InfoCard
             icon={<CodeXml />}
             title="Full-Stack Development"
@@ -90,7 +91,7 @@ const Home = () => {
           />
         </div>
       </Container>
-      <div className="hidden absolute lg:flex flex-col text-cyan-500 bottom-2 items-center justify-center gap-y-1.5">
+      <div className="hidden absolute lg:flex flex-col text-cyan-500 bottom-2 items-center justify-center gap-y-1.5 animate-once animate-fade-up animate-ease-in animate-delay-3000">
         <p className="text-cyan-500 text-sm animate-pulse">
           Scroll to explore
         </p>
@@ -124,136 +125,151 @@ const About = () => {
         <div className="flex flex-col gap-y-6 text-left">
           <div className="flex flex-col gap-y-2">
             <Heading>About Me</Heading>
-            <Subheading>
+            <Subheading className="max-w-[75vw] sm:max-w-[60vw] lg:max-w-full">
               Passionate Software Developer Committed to Writing High-Quality
               Code
             </Subheading>
-            <div
-              id="about-facts"
-              className="grid grid-flow-row lg:grid-flow-col grid-cols-2 lg:grid-cols-none mt-2.5 gap-4 max-w-fit"
-            >
+            {/* Wrap in custom component for fade-in */}
+            <FadeUpOnScroll>
               <div
-                id="about-fact-1"
-                className="flex flex-row gap-x-2 items-center"
+                id="about-facts"
+                className="grid grid-flow-row lg:grid-flow-col grid-cols-2 lg:grid-cols-none mt-2.5 gap-4 max-w-fit"
               >
-                <MapPin className="w-5 h-5 text-cyan-500" />
-                <p className="text-sm text-slate-700 dark:text-slate-300">
-                  Florida, USA
-                </p>
+                <div
+                  id="about-fact-1"
+                  className="flex flex-row gap-x-2 items-center"
+                >
+                  <MapPin className="w-5 h-5 text-cyan-500" />
+                  <p className="text-sm text-slate-700 dark:text-slate-300">
+                    Florida, USA
+                  </p>
+                </div>
+                <div
+                  id="about-fact-2"
+                  className="flex flex-row gap-x-2 items-center"
+                >
+                  {isDaytime(currentTime)
+                    ? <Sun className="w-5 h-5 text-cyan-500" />
+                    : <Moon className="w-5 h-5 text-cyan-500" />}
+                  <p className="text-sm text-slate-700 dark:text-slate-300">
+                    {currentTime}
+                  </p>
+                </div>
+                <div
+                  id="about-fact-3"
+                  className="flex lg:flex-row gap-x-2 items-center"
+                >
+                  <BookOpen className="w-5 h-5 text-cyan-500" />
+                  <p className="text-sm text-slate-700 dark:text-slate-300">
+                    2m read
+                  </p>
+                </div>
               </div>
-              <div
-                id="about-fact-2"
-                className="flex flex-row gap-x-2 items-center"
-              >
-                {isDaytime(currentTime)
-                  ? <Sun className="w-5 h-5 text-cyan-500" />
-                  : <Moon className="w-5 h-5 text-cyan-500" />}
-                <p className="text-sm text-slate-700 dark:text-slate-300">
-                  {currentTime}
-                </p>
-              </div>
-              <div
-                id="about-fact-3"
-                className="flex lg:flex-row gap-x-2 items-center"
-              >
-                <BookOpen className="w-5 h-5 text-cyan-500" />
-                <p className="text-sm text-slate-700 dark:text-slate-300">
-                  2m read
-                </p>
-              </div>
-            </div>
+            </FadeUpOnScroll>
           </div>
-          <div className="flex flex-col text-slate-700 dark:text-slate-300 text-sm lg:text-base gap-y-3 lg:gap-y-4">
-            <p>
-              In November 2020, I began my programming journey when I decided to
-              create my very own Discord bot in Python. From day one, I
-              developed a deep passion for programming, often dedicating all of
-              my free time to reading and writing code. Even when I was away
-              from my computer, I had my phone in hand with GitHub open, either
-              reading others' code or editing my own code directly on the mobile
-              website.
-            </p>
-            <div
-              id="about-me-extended"
-              className="hidden lg:flex flex-col lg:text-base gap-y-3 lg:gap-y-4"
-            >
+          {/* Wrap in custom component for fade-in */}
+          <FadeUpOnScroll>
+            <div className="flex flex-col text-slate-700 dark:text-slate-300 text-sm lg:text-base gap-y-3 lg:gap-y-4">
               <p>
-                In 2021, I focused on mastering Python. By following along with
-                tutorials, completing online courses, and listening to talks
-                from recorded conferences, I gained a deep understanding of
-                Python and what it's capable of.
+                In November 2020, I began my programming journey when I decided
+                to create my very own Discord bot in Python. From day one, I
+                developed a deep passion for programming. I often dedicated all
+                of my free time to reading and writing code. Even when I was
+                away from my computer, I had my phone in hand with GitHub open,
+                either reading others' code or editing my own code directly on
+                the mobile website (despite the limitations of not having syntax
+                highlighting, autocompletion, etc.).
               </p>
-              <p>
-                In 2022, I wanted to dive deeper! I spent the first six months
-                experimenting with C, followed by C++ in the latter half. By
-                implementing various data structures and algorithms, I gained a
-                better understanding of the fundamentals of computer science. I
-                even purchased a Raspberry Pi 4B and dabbled a bit in bare-metal
-                programming!
-              </p>
-              <p>
-                In 2023, I finally embraced JavaScript. The same year also
-                marked my transition to Linux and my first attempt at learning
-                Rust (who is infamous for its steep learning curve).
-              </p>
-              <p>
-                In 2024, I dedicated significant time to personal projects and
-                picked up TypeScript along the way. I developed many tools that
-                I still use today!
-              </p>
-              <p>
-                In 2025, I committed fully to learning Rust. It has easily
-                become my all-time-favorite programming language, and feels like
-                a perfect fit for all of my skills and interests. This year, I'm
-                also focusing on gaining more experience with TypeScript and the
-                whole front-end ecosystem!
-              </p>
-            </div>
-            <button
-              type="button"
-              className="self-start lg:hidden underline hover:cursor-pointer text-slate-700 dark:text-slate-300 hover:text-black hover:dark:text-white"
-              onClick={(event) => {
-                const element = document.getElementById("about-me-extended");
+              <div
+                id="about-me-extended"
+                className="hidden lg:flex flex-col lg:text-base gap-y-3 lg:gap-y-4"
+              >
+                <p>
+                  In 2021, I focused on mastering Python. By following along
+                  with tutorials, completing online courses, and listening to
+                  talks from recorded conferences, I gained a deep understanding
+                  of Python and what it's capable of.
+                </p>
+                <p>
+                  In 2022, I wanted to dive deeper! I spent the first six months
+                  experimenting with C, followed by C++ in the latter half. By
+                  implementing various data structures and algorithms, I gained
+                  a better understanding of the fundamentals of computer
+                  science. I even purchased a Raspberry Pi 4B and dabbled a bit
+                  in bare-metal programming!
+                </p>
+                <p>
+                  In 2023, I finally embraced JavaScript. The same year also
+                  marked my transition to Linux and my first attempt at learning
+                  Rust (who is infamous for its steep learning curve).
+                </p>
+                <p>
+                  In 2024, I dedicated significant time to personal projects and
+                  picked up TypeScript along the way. I developed many tools
+                  that I still use today!
+                </p>
+                <p>
+                  In 2025, I committed fully to learning Rust. It has easily
+                  become my all-time-favorite programming language, and feels
+                  like a perfect fit for all of my skills and interests. This
+                  year, I'm also focusing on gaining more experience with
+                  TypeScript and the whole front-end ecosystem!
+                </p>
+              </div>
+              <button
+                type="button"
+                className="self-start lg:hidden underline hover:cursor-pointer text-slate-700 dark:text-slate-300 hover:text-black hover:dark:text-white"
+                onClick={(event) => {
+                  const element = document.getElementById("about-me-extended");
 
-                if (element === null) {
-                  return;
-                }
+                  if (element === null) {
+                    return;
+                  }
 
-                element.classList.replace("hidden", "flex");
-                event.currentTarget.classList.toggle("hidden");
-              }}
-            >
-              Read more
-            </button>
-          </div>
+                  element.classList.replace("hidden", "flex");
+                  event.currentTarget.classList.toggle("hidden");
+                }}
+              >
+                Read more
+              </button>
+            </div>
+          </FadeUpOnScroll>
         </div>
-        <div className="flex flex-col justify-center items-center">
-          <Heading className="text-black dark:text-white">
-            Experience Timeline
-          </Heading>
-          <div
-            id="experience-timeline"
-            className="flex flex-col mt-8"
-          >
-            <ExperienceEntry
-              employer="Bojano Homes, LLC"
-              title="Backend Developer"
-              date="Mar 2023 - May 2023"
-              onLeft={true}
-            />
-            <ExperienceEntry
-              employer="Bojano Homes, LLC"
-              title="Fullstack Developer"
-              date="Sep 2024 - Mar 2025"
-              onLeft={false}
-            />
-            <p className="mt-4 flex flex-row items-center gap-x-2 self-center text-sm">
-              Seeking opportunities!
-            </p>
-          </div>
-        </div>
+        <ExperienceTimeline />
       </Container>
     </Section>
+  );
+};
+
+const ExperienceTimeline = () => {
+  return (
+    <FadeUpOnScroll>
+      <div className="flex flex-col justify-center items-center">
+        <h1 className="text-wrap text-xl lg:text-2xl font-semibold text-black dark:text-white">
+          Experience Timeline
+        </h1>
+        <div
+          id="experience-timeline"
+          className="flex flex-col mt-8"
+        >
+          <ExperienceEntry
+            employer="Bojano Homes, LLC"
+            title="Backend Developer"
+            date="Mar 2023 - May 2023"
+            onLeft={true}
+          />
+          <ExperienceEntry
+            employer="Bojano Homes, LLC"
+            title="Fullstack Developer"
+            date="Sep 2024 - Mar 2025"
+            onLeft={false}
+          />
+          <p className="mt-4 flex flex-row items-center gap-x-2 self-center text-sm">
+            Seeking opportunities!
+          </p>
+        </div>
+      </div>
+    </FadeUpOnScroll>
   );
 };
 
@@ -297,7 +313,7 @@ const ExperienceEntry = (
           }`}
         >
           <Calendar
-            className={`w-4 h-4 text-cyan-500 ${
+            className={`hidden sm:block w-4 h-4 text-cyan-500 ${
               onLeft ? "order-last" : "order-first"
             }`}
           />
@@ -372,15 +388,17 @@ interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
 
 const Heading = ({ children, className, ...props }: HeadingProps) => {
   return (
-    <h1
-      className={cn(
-        "text-wrap text-cyan-500 text-xl lg:text-2xl font-semibold",
-        className,
-      )}
-      {...props}
-    >
-      {children}
-    </h1>
+    <FadeUpOnScroll>
+      <h1
+        className={cn(
+          "text-wrap text-cyan-500 text-xl lg:text-2xl font-semibold",
+          className,
+        )}
+        {...props}
+      >
+        {children}
+      </h1>
+    </FadeUpOnScroll>
   );
 };
 
@@ -390,15 +408,17 @@ interface SubheadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
 
 const Subheading = ({ children, className, ...props }: SubheadingProps) => {
   return (
-    <h2
-      className={cn(
-        "text-wrap text-2xl lg:text-4xl font-extrabold",
-        className,
-      )}
-      {...props}
-    >
-      {children}
-    </h2>
+    <FadeUpOnScroll>
+      <h2
+        className={cn(
+          `text-wrap text-2xl lg:text-4xl font-extrabold`,
+          className,
+        )}
+        {...props}
+      >
+        {children}
+      </h2>
+    </FadeUpOnScroll>
   );
 };
 
@@ -474,3 +494,37 @@ function getYearsOfExperience() {
 
   return yearsBetween;
 }
+
+// This wraps everything in an additional div, but that can be fixed later.
+const FadeUpOnScroll = ({ children }: { children: React.ReactNode }) => {
+  const [isVisible, setVisible] = useState(false);
+  const domRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(domRef.current!);
+        }
+      });
+    }, { threshold: FADE_IN_THRESHOLD });
+
+    observer.observe(domRef.current!);
+
+    return () => observer.disconnect();
+  });
+
+  return (
+    <div
+      ref={domRef}
+      className={`${
+        isVisible
+          ? "opacity-100 animate-once animate-fade-up animate-ease-in"
+          : "opacity-0"
+      }`}
+    >
+      {children}
+    </div>
+  );
+};
