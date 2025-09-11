@@ -330,6 +330,7 @@ const Projects = () => (
   <Section id="projects">
     <Container>
       <Heading>Projects</Heading>
+      <p>Work in progress!</p>
     </Container>
   </Section>
 );
@@ -338,6 +339,7 @@ const Contact = () => (
   <Section id="contact">
     <Container>
       <Heading>Contact</Heading>
+      <p>Work in progress!</p>
     </Container>
   </Section>
 );
