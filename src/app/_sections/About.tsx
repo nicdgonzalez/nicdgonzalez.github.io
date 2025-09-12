@@ -111,8 +111,7 @@ export function About() {
                 of my free time to reading and writing code. Even when I was
                 away from my computer, I had my phone in hand with GitHub open,
                 either reading others' code or editing my own code directly on
-                the mobile website (despite the limitations of not having syntax
-                highlighting, autocompletion, etc.).
+                the mobile website.
               </p>
               <div
                 id="about-me-extended"
@@ -177,7 +176,7 @@ export function About() {
 
 const ExperienceTimeline = () => {
   return (
-    <FadeUpOnScroll>
+    <FadeUpOnScroll className="flex flex-col justify-center">
       <div className="flex flex-col justify-center items-center">
         <h1 className="text-wrap text-xl lg:text-2xl font-semibold text-black dark:text-white">
           Experience Timeline
@@ -231,18 +230,16 @@ const ExperienceEntry = (
         <div className="w-px h-full rounded-full block content-[''] bg-cyan-500" />
       </div>
       <div
-        className={`flex flex-col gap-y-2 pb-8 ${
+        className={`flex flex-col pb-8 gap-y-0.5 ${
           onLeft ? "order-first" : "order-last"
         }`}
       >
-        <div className="flex flex-col">
-          <h1 className="text-base lg:text-lg font-bold">{employer}</h1>
-          <h2 className="text-slate-700 dark:text-slate-300 text-sm">
-            {title}
-          </h2>
-        </div>
+        <h1 className="text-sm lg:text-lg font-bold">{employer}</h1>
+        <h2 className="text-slate-700 dark:text-slate-300 text-xs lg:text-sm">
+          {title}
+        </h2>
         <div
-          className={`flex flex-row gap-x-2 items-center ${
+          className={`flex flex-row gap-x-2 items-center mt-2 ${
             onLeft ? "justify-end" : "justify-start"
           }`}
         >

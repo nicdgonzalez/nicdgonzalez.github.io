@@ -1,3 +1,6 @@
+import { cn } from "@/lib/utils";
+import { FadeUpOnScroll } from "./FadeUpOnScroll";
+
 interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   children?: React.ReactNode;
 }
