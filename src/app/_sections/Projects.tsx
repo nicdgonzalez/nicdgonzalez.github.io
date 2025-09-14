@@ -35,6 +35,7 @@ enum Tag {
   NextJs = "Next.js",
   SolidJs = "Solid.js",
   TailwindCss = "Tailwind CSS",
+  Discordpy = "discord.py",
 
   // Databases
   MongoDb = "MongoDB",
@@ -47,61 +48,59 @@ export function Projects() {
     {
       imagePath: undefined,
       category: Category.Backend,
-      title: "Project Name 1",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.",
-      tags: [Tag.Rust, Tag.Axum, Tag.PostgreSql, Tag.TypeScript, Tag.Python],
-      repository: "https://github.com/nicdgonzalez/monkey",
-      liveDemo: undefined,
-    },
-    {
-      imagePath: undefined,
-      category: Category.Backend,
-      title: "Project Name 2",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.",
+      title: "Monkey",
+      description: "An interpreter for the Monkey programming language.",
       tags: [Tag.Rust],
       repository: "https://github.com/nicdgonzalez/monkey",
       liveDemo: undefined,
     },
     {
       imagePath: undefined,
-      category: Category.Backend,
-      title: "Project Name 3",
+      category: Category.Library,
+      title: "CLAP",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.",
+        "A command-line argument parser that uses runtime introspection to generate a command-line interface automatically.",
+      tags: [Tag.Python],
+      repository: "https://github.com/nicdgonzalez/clap",
+      liveDemo: undefined,
+    },
+    {
+      imagePath: undefined,
+      category: Category.Cli,
+      title: "Orbit",
+      description:
+        "A session manager for tmux; create and switch between sessions quickly and easily.",
+      tags: [Tag.Bash],
+      repository: "https://github.com/nicdgonzalez/orbit",
+      liveDemo: undefined,
+    },
+    {
+      imagePath: undefined,
+      category: Category.Library,
+      title: "Colorize",
+      description:
+        "Use ANSI color codes to style text in the terminal with a clean, builder-style method chaining approach.",
+      tags: [Tag.Python],
+      repository: "https://github.com/nicdgonzalez/colorize",
+      liveDemo: undefined,
+    },
+    {
+      imagePath: undefined,
+      category: Category.Cli,
+      title: "Axiom",
+      description:
+        "A command-line tool for managing PaperMC Minecraft servers.",
       tags: [Tag.Rust],
-      repository: "https://github.com/nicdgonzalez/monkey",
+      repository: "https://github.com/nicdgonzalez/axiom",
       liveDemo: undefined,
     },
     {
       imagePath: undefined,
       category: Category.Backend,
-      title: "Project Name 4",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.",
-      tags: [Tag.Rust],
-      repository: "https://github.com/nicdgonzalez/monkey",
-      liveDemo: undefined,
-    },
-    {
-      imagePath: undefined,
-      category: Category.Backend,
-      title: "Project Name 5",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.",
-      tags: [Tag.Rust],
-      repository: "https://github.com/nicdgonzalez/monkey",
-      liveDemo: undefined,
-    },
-    {
-      imagePath: undefined,
-      category: Category.Backend,
-      title: "Project Name 6",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.",
-      tags: [Tag.Rust],
-      repository: "https://github.com/nicdgonzalez/monkey",
+      title: "NicBot",
+      description: "My personal, general-purpose bot that runs on Discord.",
+      tags: [Tag.Python, Tag.Discordpy],
+      repository: "https://github.com/nicdgonzalez/nicbot",
       liveDemo: undefined,
     },
   ];
@@ -169,7 +168,7 @@ function Card(
 ) {
   return (
     <FadeUpOnScroll>
-      <li className="bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg pb-2">
+      <li className="bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg pb-2 hover:border-black hover:dark:border-white hover:relative hover:-top-1">
         <Image
           src={imagePath}
           alt="top-down view of a laptop on a wooden desk"
