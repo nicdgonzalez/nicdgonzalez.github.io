@@ -1,16 +1,15 @@
 "use client";
 
+import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import type { PropsWithChildren } from "react";
-
+import { FaGithub } from "react-icons/fa";
+import { PrimaryButton, SecondaryButton } from "@/components/Button";
 import { Container } from "@/components/Container";
+import { FadeUpOnScroll } from "@/components/FadeUpOnScroll";
 import { Heading } from "@/components/Heading";
 import { Section } from "@/components/Section";
 import { Subheading } from "@/components/Subheading";
-import { FaGithub } from "react-icons/fa";
-import { ExternalLink } from "lucide-react";
-import { PrimaryButton, SecondaryButton } from "@/components/Button";
-import { FadeUpOnScroll } from "@/components/FadeUpOnScroll";
 
 enum Category {
   WebApplication = "Web Application",
@@ -168,7 +167,7 @@ function Card(
 ) {
   return (
     <FadeUpOnScroll>
-      <li className="bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg pb-2 hover:border-black hover:dark:border-white hover:relative hover:-top-1">
+      <li className="h-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg pb-2 hover:border-black hover:dark:border-white hover:relative hover:-top-1">
         <Image
           src={imagePath}
           alt="top-down view of a laptop on a wooden desk"
