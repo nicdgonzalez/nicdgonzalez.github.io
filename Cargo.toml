@@ -1,0 +1,14 @@
+[package]
+name = "portfolio"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+console_error_panic_hook = "0.1.7"
+icondata = "0.6.0"
+leptos = { version = "0.8.3", features = ["csr"] }
+leptos_icons = "0.7.0"
+leptos_meta = "0.8.3"
+leptos_router = "0.8.3"
+lucide-leptos = { version = "2.36.0", features = ["accessibility", "arrows", "layout", "weather"] }
+tw_merge = "0.1.7"
