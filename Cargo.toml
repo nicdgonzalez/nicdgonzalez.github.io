@@ -10,5 +10,5 @@ leptos = { version = "0.8.3", features = ["csr"] }
 leptos_icons = "0.7.0"
 leptos_meta = "0.8.3"
 leptos_router = "0.8.3"
-lucide-leptos = { version = "2.36.0", features = ["accessibility", "arrows", "layout", "weather"] }
+lucide-leptos = { version = "2.36.0", features = ["accessibility", "arrows", "communication", "layout", "weather"] }
 tw_merge = "0.1.7"

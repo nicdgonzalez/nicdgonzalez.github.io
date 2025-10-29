@@ -1,10 +1,13 @@
 #![allow(non_snake_case)]
 
 use leptos::prelude::*;
+use leptos_icons::Icon;
 use leptos_meta::*;
-use lucide_leptos::ExternalLink;
+use lucide_leptos::{ArrowDown, ArrowRight, ExternalLink};
 
-use crate::components::Section;
+use crate::components::{
+    Button, ButtonVariant, Header, Heading, ListItem, Section, Subheading, UnorderedList,
+};
 
 #[component]
 pub fn Home() -> impl IntoView {
@@ -22,22 +25,47 @@ pub fn Home() -> impl IntoView {
 fn Hero() -> impl IntoView {
     view! {
         <Section id="hero">
-            <header>
-                <h2>"Hey, I'm "<strong>"Nic"</strong>"."</h2>
-                <p>"A software developer based in the U.S.A."</p>
-            </header>
-            <p>
+            <Header>
+                <Heading class="animate-fade-down animate-delay-500">
+                    "Hey, I'm "<span class="underline decoration-yellow-500">"Nic"</span>"."
+                </Heading>
+                <Subheading class="font-noto-sans-jp animate-fade-down animate-delay-1000">
+                    "はじめまして、ニックです"
+                </Subheading>
+            </Header>
+            <p class="animate-fade-left animate-delay-1500">
                 "I build meticulously crafted tools and applications that "
                 <i>"feel good to use"</i>"."
             </p>
-            <p>
-                "I appreciate clean, thoughtful codebases — the kind with solid tests, clear documentation, and features that fit together seamlessly."
+            <p class="animate-fade-left animate-delay-1500">
+                "I appreciate clean, thoughtful codebases — the kind with solid tests, clear documentation,"
+                <br class="hidden lg:inline-block" /> " and features that fit together seamlessly."
             </p>
-            <p>
-                "My goal is to write code that others look at and think, "
-                <q>"this is the way it "<em>"should"</em>" be done."</q>
+            <p class="animate-fade-left animate-delay-1500">
+                "I want to create meaningful projects that help lots of people."<br />
+                "I want my work to inspire others to go out and start building."
             </p>
+            <p class="animate-fade-left animate-delay-1500">
+                <q lang="ja" cite="The Final Boss!! season 8, episode 3, BONES FILM, 18 Oct. 2025.">
+                    "世界は一人の力で変えられます"
+                </q>
+                " — "
+                <span>"The world can change with the power of one person."</span>
+            </p>
+            <div class="flex flex-row gap-x-4 pt-4 animate-fade-up animate-delay-2000">
+                <Button variant=ButtonVariant::Primary href="#projects">
+                    "See what I'm building"
+                    <ArrowRight size=20 />
+                </Button>
+            </div>
         </Section>
+
+        <div class="flex flex-col absolute bottom-4 justify-center items-center gap-y-4 animate-fade-up animate-delay-3000">
+            <p class="text-sm animate-pulse">"Scroll to explore!"</p>
+            <span class="animate-bounce">
+                <ArrowDown size=24 />
+            </span>
+        </div>
     }
 }
 
@@ -79,33 +107,44 @@ fn Projects() -> impl IntoView {
 
     view! {
         <Section id="projects">
-            <header>
-                <h2>"Projects"</h2>
-                <p>"Carefully crafted tools, experiments, and ideas."</p>
-            </header>
-            <ul class="flex flex-col gap-y-2">
+            <Header>
+                <Heading>"Projects"</Heading>
+                <Subheading>"Carefully crafted tools, experiments, and ideas."</Subheading>
+            </Header>
+            <UnorderedList>
                 {projects
                     .into_iter()
                     .map(|project| {
                         view! {
-                            <li class="after:mt-2 after:block after:content-[''] after:w-full after:h-px after:bg-zinc-400 dark:after:bg-zinc-600">
+                            <ListItem>
                                 <a
                                     href=project.href
                                     target="_blank"
                                     rel="noreferrer noopener"
-                                    class="flex flex-row items-center gap-x-2 w-max font-semibold text-base lg:text-xl text-zinc-800 hover:text-black dark:text-zinc-200 dark:hover:text-white hover:underline"
+                                    class="flex flex-row items-center gap-x-1.5 w-max \
+                                    font-semibold text-sm lg:text-base text-zinc-800 hover:text-black dark:text-zinc-200 dark:hover:text-white hover:underline"
                                 >
                                     {project.title}
-                                    <ExternalLink size=20 />
+                                    <ExternalLink size=16 />
                                 </a>
-                                <p class="text-zinc-800 dark:text-zinc-200">
+                                <p class="text-zinc-800 dark:text-zinc-200 text-xs lg:text-sm">
                                     {project.description}
                                 </p>
-                            </li>
+                            </ListItem>
                         }
                     })
                     .collect_view()}
-            </ul>
+            </UnorderedList>
+            <p class="pb-4">
+                "See "
+                <a
+                    href="https://github.com/nicdgonzalez"
+                    class="inline-flex gap-x-1 items-center hover:underline"
+                >
+                    "more"
+                    <ExternalLink size=16 />
+                </a> "."
+            </p>
         </Section>
     }
 }
@@ -138,33 +177,34 @@ fn Resources() -> impl IntoView {
 
     view! {
         <Section id="resources">
-            <header>
-                <h2>"Resources"</h2>
-                <p>"Pages that I find useful."</p>
-            </header>
-            <ul class="flex flex-col gap-y-2">
+            <Header>
+                <Heading>"Resources"</Heading>
+                <Subheading>"Pages that I find useful."</Subheading>
+            </Header>
+            <UnorderedList>
                 {resources
                     .into_iter()
                     .map(|resource| {
                         view! {
-                            <li class="after:mt-2 after:block after:content-[''] after:w-full after:h-px after:bg-zinc-400 dark:after:bg-zinc-600">
+                            <ListItem>
                                 <a
                                     href=resource.href
                                     target="_blank"
                                     rel="noreferrer noopener"
-                                    class="flex flex-row items-center gap-x-2 w-max font-semibold text-base lg:text-xl text-zinc-800 hover:text-black dark:text-zinc-200 dark:hover:text-white hover:underline"
+                                    class="flex flex-row items-center gap-x-1.5 w-max \
+                                    font-semibold text-sm lg:text-base text-zinc-800 hover:text-black dark:text-zinc-200 dark:hover:text-white hover:underline"
                                 >
                                     {resource.title}
-                                    <ExternalLink size=20 />
+                                    <ExternalLink size=16 />
                                 </a>
-                                <p class="text-zinc-800 dark:text-zinc-200">
+                                <p class="text-zinc-800 dark:text-zinc-200 text-xs lg:text-sm">
                                     {resource.description}
                                 </p>
-                            </li>
+                            </ListItem>
                         }
                     })
                     .collect_view()}
-            </ul>
+            </UnorderedList>
         </Section>
     }
 }
@@ -173,16 +213,55 @@ fn Resources() -> impl IntoView {
 fn Contact() -> impl IntoView {
     view! {
         <Section id="contact">
-            <header>
-                <h2>"Contact"</h2>
-                <p>""</p>
-            </header>
-            <p>
+            <Header>
+                <Heading>"Contact"</Heading>
+                <Subheading>""</Subheading>
+            </Header>
+            <p class="pb-4">
                 "You can reach me anytime at "
-                <a href="mailto:ndgonzalez.work@gmail.com" class="font-semibold hover:underline">
+                <a
+                    href="mailto:ndgonzalez.work@gmail.com"
+                    class="font-semibold hover:underline decoration-yellow-500"
+                >
                     "ndgonzalez.work@gmail.com"
                 </a>
             </p>
+            <h3 class="text-lg font-medium">"Find me on"</h3>
+            <ul class="flex flex-row gap-x-4">
+                <li>
+                    <a
+                        href="https://github.com/nicdgonzalez"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        class="flex flex-row items-center gap-x-3 hover:cursor-pointer hover:underline"
+                    >
+                        <Icon icon=icondata::AiGithubFilled width="24" height="24" />
+                        "GitHub"
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href="https://linkedin.com/in/nicdgonzalez"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        class="flex flex-row items-center gap-x-3 hover:cursor-pointer hover:underline"
+                    >
+                        <Icon icon=icondata::AiLinkedinFilled width="24" height="24" />
+                        "LinkedIn"
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href="https://discord.com/users/374923756646301698/"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        class="flex flex-row items-center gap-x-3 hover:cursor-pointer hover:underline"
+                    >
+                        <Icon icon=icondata::BsDiscord width="24" height="24" />
+                        "Discord"
+                    </a>
+                </li>
+            </ul>
         </Section>
     }
 }
