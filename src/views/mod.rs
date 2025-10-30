@@ -1,3 +1,3 @@
-pub mod home;
+mod home;
 
 pub use home::Home;

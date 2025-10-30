@@ -1,39 +1,20 @@
 #![allow(non_snake_case)]
 
-mod button;
-mod heading;
-mod list;
-mod nav;
-mod section;
+pub mod button;
+pub mod heading;
+pub mod list;
+pub mod nav;
+pub mod section;
 
 use leptos::prelude::*;
 use leptos_icons::Icon;
 use lucide_leptos::CircleArrowUp;
 
-pub use button::*;
-pub use heading::*;
-pub use list::*;
 pub use nav::*;
 pub use section::*;
 
-#[component]
-pub fn MainHeader() -> impl IntoView {
-    view! {
-        <header class="flex flex-row z-50 fixed top-0 w-screen min-h-8 justify-between items-center px-8 py-4 animate-fade-down">
-            <a href="/">"Nicolas Gonzalez"</a>
-            <MainNavigation />
-        </header>
-    }
-}
-
-struct NavLink {
-    href: &'static str,
-    title: &'static str,
-}
-
-#[component]
-pub fn MainNavigation() -> impl IntoView {
-    let links = [
+pub fn Header() -> impl IntoView {
+    let links = Vec::from_iter([
         NavLink {
             href: "#",
             title: "Home",
@@ -50,27 +31,42 @@ pub fn MainNavigation() -> impl IntoView {
             href: "#contact",
             title: "Contact",
         },
-    ];
+    ]);
+
+    view! {
+        <header class="flex flex-row z-50 fixed top-0 w-screen min-h-8 justify-between items-center px-8 py-4 animate-fade-down">
+            <a href="/">"Nicolas Gonzalez"</a>
+            <Navigation links=links />
+        </header>
+    }
+}
+
+pub struct NavLink {
+    href: &'static str,
+    title: &'static str,
+}
+
+#[component]
+pub fn Navigation(links: Vec<NavLink>) -> impl IntoView {
+    let links = links
+        .into_iter()
+        .map(|link| {
+            view! {
+                <NavItem>
+                    <a
+                        href=link.href
+                        class="hover:underline hover:decoration-2 hover:decoration-yellow-500"
+                    >
+                        {link.title}
+                    </a>
+                </NavItem>
+            }
+        })
+        .collect_view();
 
     view! {
         <Nav>
-            <NavGroup>
-                {links
-                    .into_iter()
-                    .map(|link| {
-                        view! {
-                            <NavItem>
-                                <a
-                                    href=link.href
-                                    class="hover:underline hover:decoration-2 hover:decoration-yellow-500"
-                                >
-                                    {link.title}
-                                </a>
-                            </NavItem>
-                        }
-                    })
-                    .collect_view()}
-            </NavGroup>
+            <NavGroup>{links}</NavGroup>
             <NavGroup>
                 <NavItem>
                     <a
@@ -87,13 +83,13 @@ pub fn MainNavigation() -> impl IntoView {
 }
 
 #[component]
-pub fn MainFooter() -> impl IntoView {
+pub fn Footer() -> impl IntoView {
     view! {
-        <footer class="flex justify-center bg-zinc-200 dark:bg-zinc-800">
+        <footer class="flex justify-center bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
             <Container class="flex flex-row justify-between">
                 <p>"© 2025 Nicolas Gonzalez"</p>
                 <a href="#">
-                    <span class="text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100">
+                    <span class="hover:text-zinc-900 dark:hover:text-zinc-100">
                         <CircleArrowUp size=24 />
                     </span>
                 </a>

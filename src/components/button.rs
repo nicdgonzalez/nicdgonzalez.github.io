@@ -3,6 +3,7 @@
 use leptos::prelude::*;
 use tw_merge::tw_merge;
 
+#[expect(dead_code)]
 #[derive(Debug, Clone, Copy, Default)]
 pub enum ButtonVariant {
     #[default]

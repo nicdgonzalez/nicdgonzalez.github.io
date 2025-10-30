@@ -28,7 +28,7 @@ pub fn ListItem(
     #[prop(into, optional)] class: MaybeProp<String>,
 ) -> impl IntoView {
     let class = tw_merge!(
-"after:mt-2 after:block after:content-[''] after:w-full after:h-px after:bg-zinc-400 dark:after:bg-zinc-600",
+        "after:mt-2 after:block after:content-[''] after:w-full after:h-px after:bg-zinc-400 dark:after:bg-zinc-600",
         class.get().unwrap_or_default()
     );
 

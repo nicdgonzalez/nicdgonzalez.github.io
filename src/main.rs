@@ -1,3 +1,5 @@
+//! The main entry point to the application.
+
 #![warn(
     clippy::correctness,
     clippy::suspicious,
@@ -10,22 +12,21 @@
 mod components;
 mod views;
 
+use leptos::mount::mount_to_body;
 use leptos::prelude::*;
-use leptos_meta::*;
-use leptos_router::components::*;
+use leptos_meta::{provide_meta_context, Title};
+use leptos_router::components::{Route, Router, Routes};
 use leptos_router::path;
 
-use components::{MainFooter, MainHeader};
-use views::Home;
+use crate::components::{Footer, Header};
+use crate::views::Home;
 
 fn main() {
     console_error_panic_hook::set_once();
-    mount_to_body(App);
+    mount_to_body(app_view);
 }
 
-#[component]
-#[expect(non_snake_case)]
-fn App() -> impl IntoView {
+fn app_view() -> impl IntoView {
     provide_meta_context();
     let formatter = |text| format!("{text} | Nicolas Gonzalez");
 
@@ -33,23 +34,13 @@ fn App() -> impl IntoView {
         <Title formatter />
 
         <Router>
-            // <Banner>"This site is currently under active development!"</Banner>
-            <MainHeader />
+            <Header />
             <main class="bg-zinc-100 dark:bg-zinc-900 text-black dark:text-white font-inter flex flex-col items-center">
                 <Routes fallback=|| "Not found">
                     <Route path=path!("/") view=Home />
                 </Routes>
             </main>
-            <MainFooter />
+            <Footer />
         </Router>
-    }
-}
-
-#[component]
-fn Banner(children: Children) -> impl IntoView {
-    view! {
-        <div class="static top-0 min-w-screen flex flex-row justify-center items-center min-h-8 bg-yellow-500 text-black text-sm font-medium">
-            {children()}
-        </div>
     }
 }
