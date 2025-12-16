@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const title = "Home";
+---
+
+<Layout title={title}>
+  <section
+    class="flex min-h-screen flex-col items-center justify-center text-center"
+  >
+    <div class="container">
+      <header>
+        <h1 class="animate-fade-right text-4xl">
+          Hey, I'm
+          <span class="font-medium underline decoration-yellow-500">Nic</span>.
+        </h1>
+        <p class="noto-sans-jp animate-fade-left animate-delay-250 text-xl">
+          はじめまして、ニックです
+        </p>
+      </header>
+    </div>
+
+    <div class="animate-delay-2500 animate-fade-up absolute bottom-10">
+      <p class="text-zinc-700 dark:text-zinc-300">
+        Nothing to see yet! Check back later.
+      </p>
+    </div>
+  </section>
+</Layout>

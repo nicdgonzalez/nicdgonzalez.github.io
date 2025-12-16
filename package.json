@@ -1,0 +1,22 @@
+{
+    "$schema": "https://www.schemastore.org/package.json",
+    "type": "module",
+    "version": "0.1.0",
+    "scripts": {
+        "dev": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "astro": "astro"
+    },
+    "dependencies": {
+        "@tailwindcss/vite": "^4.1.18",
+        "astro": "^5.16.5",
+        "tailwindcss": "^4.1.18"
+    },
+    "devDependencies": {
+        "prettier": "3.7.4",
+        "prettier-plugin-astro": "0.14.1",
+        "prettier-plugin-tailwindcss": "^0.7.2",
+        "tailwindcss-animated": "^2.0.0"
+    }
+}
